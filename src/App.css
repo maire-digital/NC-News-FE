@@ -6,11 +6,26 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Syne", sans-serif;
+  background-color: #fffff4;
 }
 
 header {
-  border: purple dashed;
-  margin: 2em;
+  border-top: mediumslateblue solid;
+  border-bottom: mediumslateblue solid;
+  padding: 1em;
+  position: relative;
+}
+
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 17vw;
+  color: darkslateblue;
+}
+
+header h2 {
+  font-size: 3vw;
+  color: darkslateblue;
 }
 
 nav {
@@ -18,9 +33,8 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   max-width: 10 em;
-  padding: 1em;
-  margin: 2em;
-  border: green dashed;
+  padding: 1vw;
+  border-top-color: mediumslateblue;
 }
 
 nav aside {
@@ -44,7 +58,7 @@ nav aside {
 }
 
 .article-card {
-  border: red dashed;
+  border: solid mediumslateblue;
   display: flex;
   flex-direction: column;
   max-width: 10 em;
@@ -57,12 +71,47 @@ nav aside {
   justify-content: space-evenly;
 }
 
+.article-title {
+  text-transform: uppercase;
+}
+
+#article-card-topic {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
 .topics-list {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   list-style-type: none;
+  padding: 1rem;
 }
+
+.link {
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid slateblue;
+  color: darkslateblue;
+  font-weight: 700;
+  padding: 5px;
+}
+
+.link:focus,
+.link:hover {
+  background-color: darkslateblue;
+  color: beige;
+  font-weight: lighter;
+}
+
+/* .topic &:focus,
+&:hover,
+&:visited,
+&:link,
+&:active {
+  text-decoration: none;
+} */
 
 @media (min-width: 640px) {
   .articles-list {
@@ -70,5 +119,31 @@ nav aside {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-gap: 20px;
+  }
+  header h1 {
+    font-size: 9vw;
+  }
+  .csstransforms header {
+    border-left: 34px solid #369;
+
+    /* Make a little room */
+    padding-left: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* Border is the new background */
+    background: none;
+
+    /* Rotate from top left corner (not default) */
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
   }
 }

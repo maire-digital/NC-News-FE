@@ -13,7 +13,7 @@ export default function Nav () {
             <img className="user-img-avatar" src={loggedInUser.avatar_url} alt="logged in user" />
             </aside>
         
-            <Link to="/">Home</Link>
+            <Link to="/" className="link">Home</Link>
         </nav>
     )
 }
