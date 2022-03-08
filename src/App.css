@@ -57,6 +57,13 @@ nav aside {
   justify-content: space-evenly;
 }
 
+.topics-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
 @media (min-width: 640px) {
   .articles-list {
     display: grid;

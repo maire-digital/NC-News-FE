@@ -19,7 +19,10 @@ function App() {
         <div className="App">
           <Nav />
           <Header />
-          <HomeArticles />
+          <Routes>
+            <Route path="/" element={<HomeArticles />} />
+            <Route path="/articles/:topic" element={<HomeArticles />} />
+          </Routes>
         </div>
       </UserContext.Provider>
     </BrowserRouter>
