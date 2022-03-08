@@ -1,24 +1,42 @@
 import {useEffect, useState} from "react"
+import { useParams } from "react-router-dom"
 import * as api from "../Api"
+import { SortingNav } from "./SortingNav"
 
 
 export default function HomeArticles () {
 
     const [homeArticles, setHomeArticles] = useState([])
-
     const [isLoading, setIsLoading] = useState(true)
-
+    const { topic } = useParams();
+  
     useEffect(() => {
         setIsLoading(true)
+        if (topic) {
+   
+        api.getSortedArticles(topic).then((sortedArticles)=> { 
+        setHomeArticles(sortedArticles) 
+        setIsLoading(false)})     
+        }
+        
+        else {
         api.getArticles()
         .then(articles=>{
-            setHomeArticles(articles)
-            setIsLoading(false)
-        })
-    }, [])
+        setHomeArticles(articles)
+        setIsLoading(false)
+        })      
+        }
+    }, [topic])
+
+    function limit (string = '', limit = 0) {  
+        return string.substring(0, limit)
+      }
+   
+    if (isLoading) return <p> Loading... </p>
 
     return (
-        isLoading ? <p>Loading...</p> : (
+        <>
+     <SortingNav />
         <article>
             <ul className="articles-list">
             {homeArticles.map(article => {
@@ -27,8 +45,9 @@ export default function HomeArticles () {
                             <h2>{article.title}</h2>
                             <h4> {article.author}</h4>
                             <dl>
-                                <dt>posted at {article.created_at}</dt>
-                                <dt>{article.body}</dt>
+                                <time>posted at {article.created_at}</time>
+                                <dt>{limit(article.body, 100)}... </dt>
+                                <dt>see more...</dt>
                                 <section id="article-info">
                                 <dt>{article.topic}</dt>
                                 <dt>{article.comment_count} comments </dt>
@@ -40,5 +59,5 @@ export default function HomeArticles () {
             })}
             </ul>
         </article>
-    ))
+    </>)
 }
