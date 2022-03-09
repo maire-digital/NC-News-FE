@@ -2,9 +2,10 @@ import "./App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { UserContext } from "./components/UserContext";
+import { UserContext } from "./contexts/UserContext";
 import { useState } from "react";
 import HomeArticles from "./components/HomeArticles";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -21,7 +22,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<HomeArticles />} />
-            <Route path="/articles/:topic" element={<HomeArticles />} />
+            <Route path="/articles/show/:topic" element={<HomeArticles />} />
+            <Route path="/articles/:article_id" element={<SingleArticle />} />
           </Routes>
         </div>
       </UserContext.Provider>

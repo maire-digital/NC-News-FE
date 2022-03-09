@@ -10,6 +10,13 @@
   background-color: #fffff4;
 }
 
+[data-theme="dark"] {
+  --background: black;
+  --text-primary: white;
+  --text-secondary: grey;
+  --accent: darkred;
+}
+
 header {
   border-top: mediumslateblue solid;
   border-bottom: mediumslateblue solid;
@@ -24,8 +31,8 @@ header h1 {
 }
 
 header h2 {
-  font-size: 3vw;
-  color: darkslateblue;
+  font-size: 5vw;
+  color: #483d8b;
 }
 
 nav {
@@ -37,10 +44,15 @@ nav {
   border-top-color: mediumslateblue;
 }
 
+.toggle-theme {
+  border: solid mediumslateblue;
+  border-radius: 50%;
+}
+
 nav aside {
   border: blue dashed;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .user-img-avatar {
@@ -81,6 +93,41 @@ nav aside {
   justify-content: right;
 }
 
+.single-article {
+  text-align: left;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 3em;
+}
+
+.single-article-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.single-article-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 7vw;
+  color: darkslateblue;
+}
+
+.single-article-details {
+}
+
+.single-article-body {
+  border: darkslateblue solid;
+  padding: 10px;
+  margin-top: 1em;
+}
+
+.single-article-votes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .topics-list {
   display: flex;
   flex-direction: row;
@@ -103,15 +150,9 @@ nav aside {
   background-color: darkslateblue;
   color: beige;
   font-weight: lighter;
+  outline: solid slateblue;
+  outline-offset: 5px;
 }
-
-/* .topic &:focus,
-&:hover,
-&:visited,
-&:link,
-&:active {
-  text-decoration: none;
-} */
 
 @media (min-width: 640px) {
   .articles-list {
@@ -123,27 +164,13 @@ nav aside {
   header h1 {
     font-size: 9vw;
   }
-  .csstransforms header {
-    border-left: 34px solid #369;
-
-    /* Make a little room */
-    padding-left: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    /* Border is the new background */
-    background: none;
-
-    /* Rotate from top left corner (not default) */
-    -webkit-transform-origin: 0 0;
-    -moz-transform-origin: 0 0;
-    -ms-transform-origin: 0 0;
-    -o-transform-origin: 0 0;
-
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
+  .single-article {
+    margin: 5em;
+  }
+  .single-article-header h2 {
+    font-size: 5vw;
+  }
+  .single-article-votes {
+    justify-content: right;
   }
 }

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import * as api from "../Api"
 import { SortingNav } from "./SortingNav"
 
@@ -33,8 +33,6 @@ export default function HomeArticles () {
         return string.substring(0, limit)
       }
 
-   
-
     if (isLoading) return <p> Loading... </p>
 
     return (
@@ -45,7 +43,7 @@ export default function HomeArticles () {
             {homeArticles.map(article => {
                 return (
                     <li key={article.article_id} className="article-card">
-                            <h2 className="article-title">{limit(article.title, 25)}...</h2>
+                         <Link to={`/articles/${article.article_id}`} key={article.article_id} className="link"><h2 className="article-title">{limit(article.title, 30)}...</h2></Link>
                             <h4 className="user"> {article.author}</h4>
                             <dl>
                                 <dt id="artice-card-topic">{article.topic}</dt>
