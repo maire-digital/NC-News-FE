@@ -2,9 +2,9 @@
 export default function Header () {
 
     return (
-        <header>
+        <header className="csstransforms">
             <h1>NC NEWS</h1>
-            <h2>news aggregation etc...</h2>
+            <h2> news for northcoders</h2>
         </header>
     )
 }

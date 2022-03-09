@@ -28,3 +28,13 @@ export function getSortedArticles(topic) {
     }
   );
 }
+
+// Articles - GET single article by id
+
+export function getSingleArticle(article_id) {
+  return NCNewsApi.get(`/articles/${article_id}`).then(
+    ({ data: { article } }) => {
+      return article;
+    }
+  );
+}

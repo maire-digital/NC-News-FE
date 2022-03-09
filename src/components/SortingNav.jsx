@@ -22,7 +22,7 @@ export function SortingNav () {
             <ul className="topics-list">
             {allTopics.map(topic => {
                 return (  
-                    <Link to={`/articles/${topic.slug}`} key={topic.slug} className="topic">{topic.slug}</Link>
+                    <Link to={`/articles/show/${topic.slug}`} key={topic.slug} className="link">{topic.slug}</Link>
                 )
             })}
             </ul>
