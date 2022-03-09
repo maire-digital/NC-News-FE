@@ -38,3 +38,13 @@ export function getSingleArticle(article_id) {
     }
   );
 }
+
+// Articles - PATCH single article votes by id
+
+export function updateArticleVotes(article_id) {
+  return NCNewsApi.patch(`/articles/${article_id}`, { inc_votes: 1 }).then(
+    ({ data: { article } }) => {
+      return article;
+    }
+  );
+}
