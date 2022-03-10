@@ -41,10 +41,22 @@ export function getSingleArticle(article_id) {
 
 // Articles - PATCH single article votes by id
 
-export function updateArticleVotes(article_id) {
-  return NCNewsApi.patch(`/articles/${article_id}`, { inc_votes: 1 }).then(
+// change vote count
+
+export function updateArticleVotes(article_id, change) {
+  return NCNewsApi.patch(`/articles/${article_id}`, { inc_votes: change }).then(
     ({ data: { article } }) => {
       return article;
+    }
+  );
+}
+
+// Comments - GET comments by article id
+
+export function getComments(article_id) {
+  return NCNewsApi.get(`/articles/${article_id}/comments`).then(
+    ({ data: { comments } }) => {
+      return comments;
     }
   );
 }

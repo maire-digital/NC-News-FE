@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react"
 import { useParams } from "react-router-dom"
 import * as api from "../Api"
-import ArticleVote from "./ArticleVote"
+import Voter from "./Voter"
+import ArticleComments from "./SingleArticleComments"
 
 export default function SingleArticle () {
 
@@ -21,24 +22,29 @@ export default function SingleArticle () {
 
     if (isLoading) return <p> Loading... </p>
 
-    return(
+    const date = new Date(Date.parse(article.created_at))
 
+    return(
+    <>
     <article className="single-article"> 
+    
         <section className="single-article-header">
             <h2>{article.title}</h2>
-            <h4> {article.author}</h4>
+            <h4>{article.topic}</h4> 
         </section>
 
         <section className="single-article-details">
-            <h4>{article.topic}</h4> 
-            <time>posted at {article.created_at}</time>     
+             <h4> {article.author}</h4>
+            <time>{date.toUTCString()}</time>   
         </section> 
 
-        <p className="single-article-body">{article.body}</p>
-                
-        <ArticleVote article={article}/>
+        <p className="single-article-body">{article.body}</p>       
+        <Voter article={article}/>
         
-        </article>
+    </article>
 
+    <h3 className="article-comments-title"> Comments </h3>
+    <ArticleComments />
+    </>
     )
 }

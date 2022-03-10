@@ -8,6 +8,7 @@
   box-sizing: border-box;
   font-family: "Syne", sans-serif;
   background-color: #fffff4;
+  list-style-type: none;
 }
 
 [data-theme="dark"] {
@@ -39,9 +40,16 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 10 em;
-  padding: 1vw;
   border-top-color: mediumslateblue;
+  margin: 1em;
+  align-items: center;
+}
+
+nav aside {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .toggle-theme {
@@ -49,27 +57,27 @@ nav {
   border-radius: 50%;
 }
 
-nav aside {
-  border: blue dashed;
-  display: flex;
-  justify-content: space-around;
-}
-
 .user-img-avatar {
   border-radius: 50%;
-  width: 25px;
+  width: 1em;
   object-fit: cover;
+  outline: mediumslateblue solid 2px;
+  outline-offset: 2px;
+  margin-right: 5px;
 }
 
-.articles-list {
+.articles-list,
+.comments-list {
   display: grid;
   grid-template-columns: repeat(auto-fit min-max(300px, 1fr));
   grid-gap: 20px;
   text-align: left;
-  margin: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
-.article-card {
+.article-card,
+.comment-card {
   border: solid mediumslateblue;
   display: flex;
   flex-direction: column;
@@ -83,14 +91,18 @@ nav aside {
   justify-content: space-evenly;
 }
 
-.article-title {
+#article-title {
   text-transform: uppercase;
+  color: darkslateblue;
 }
 
-#article-card-topic {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
+.article-card-body {
+  margin-top: 1em;
+}
+
+.article-card-snippet,
+.article-card-topic {
+  color: slateblue;
 }
 
 .single-article {
@@ -104,6 +116,7 @@ nav aside {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: 1em;
 }
 
@@ -114,26 +127,51 @@ nav aside {
 }
 
 .single-article-body {
-  border: darkslateblue solid;
+  border: mediumslateblue solid;
   padding: 10px;
   margin-top: 1em;
 }
 
 .single-article-votes {
+  margin-top: 1em;
+  margin-bottom: 2em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.article-comments-title {
+  font-family: "Playfair Display", serif;
+  font-size: 5vw;
+  color: darkslateblue;
+  text-align: left;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+}
+
+button#hide {
+  display: none;
+}
+
+button#show {
+  display: block;
 }
 
 .topics-list {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  list-style-type: none;
   padding: 1rem;
 }
 
-.link {
+.article-link {
+  text-decoration: none;
+}
+
+.link,
+.home,
+nav aside {
   text-decoration: none;
   text-transform: uppercase;
   border: 2px solid slateblue;
@@ -143,7 +181,14 @@ nav aside {
 }
 
 .link:focus,
-.link:hover {
+.link:hover,
+.link:active,
+.home:focus,
+.home:hover,
+.article-link:focus,
+.article-link:hover,
+button#show:hover,
+button#show:focus {
   background-color: darkslateblue;
   color: beige;
   font-weight: lighter;
@@ -152,7 +197,8 @@ nav aside {
 }
 
 @media (min-width: 750px) {
-  .articles-list {
+  .articles-list,
+  .comments-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -160,6 +206,9 @@ nav aside {
   }
   header h1 {
     font-size: 9vw;
+  }
+  header h2 {
+    font-size: 3vw;
   }
   .single-article {
     margin: 5em;
@@ -169,5 +218,9 @@ nav aside {
   }
   .single-article-votes {
     justify-content: right;
+  }
+  .comments-list {
+    margin-left: 5em;
+    margin-right: 5em;
   }
 }

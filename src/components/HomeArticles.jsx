@@ -32,7 +32,7 @@ export default function HomeArticles () {
     function limit (string = '', limit = 0) {  
         return string.substring(0, limit)
       }
-
+    
     if (isLoading) return <p> Loading... </p>
 
     return (
@@ -41,21 +41,29 @@ export default function HomeArticles () {
         <article>
             <ul className="articles-list">
             {homeArticles.map(article => {
+                const date = new Date(Date.parse(article.created_at))
+
                 return (
+                    
                     <li key={article.article_id} className="article-card">
-                         <Link to={`/articles/${article.article_id}`} key={article.article_id} className="link"><h2 className="article-title">{limit(article.title, 30)}...</h2></Link>
-                            <h4 className="user"> {article.author}</h4>
-                            <dl>
-                                <dt id="artice-card-topic">{article.topic}</dt>
-                                <time>posted at {article.created_at}</time>
-                                <dt>{limit(article.body, 100)}... </dt>
-                                <dt>see more...</dt>
-                                <section id="article-info">
-                                
-                                <dt>{article.comment_count} comments </dt>
-                                <dt>{article.votes} votes</dt>
-                                </section>
-                            </dl>
+                         <Link to={`/articles/${article.article_id}`} key={article.article_id} className="article-link">
+                             <h2 id="article-title">{article.title}</h2>
+                        </Link>
+                            <main className="article-card-body">
+                              <h4 className="user"> {article.author}</h4>
+                              <dt className="article-card-topic">{article.topic}</dt>
+                                <dl>
+                                    <time>{date.toUTCString()}</time>
+                                    <dt className="article-card-snippet">{limit(article.body, 120)}... </dt>
+                                    <dt>see more...</dt>
+                                    <section id="article-info">
+                                    
+                                    <dt>{article.comment_count} comments </dt>
+                                    <dt>{article.votes} votes</dt>
+                                    </section>
+                                </dl>   
+                            </main>
+                           
                     </li>
                 )
             })}
