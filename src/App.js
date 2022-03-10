@@ -9,7 +9,7 @@ import SingleArticle from "./components/SingleArticle";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
-    username: "DEFAULT USER",
+    username: "< DEFAULT USER >",
     avatar_url:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Tomb_of_Nakht_%287%29.jpg/220px-Tomb_of_Nakht_%287%29.jpg",
   });

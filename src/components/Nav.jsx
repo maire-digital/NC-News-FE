@@ -7,12 +7,13 @@ export default function Nav () {
     const {loggedInUser} = useContext(UserContext)
     return (
         <nav>
-            <aside>   
-            WELCOME {loggedInUser.username}
+            <aside>              
             <img className="user-img-avatar" src={loggedInUser.avatar_url} alt="logged in user" />
+            WELCOME {loggedInUser.username}
+ 
             </aside>
             <section>    
-            <Link to="/" className="link">Home</Link>
+            <Link to="/" className="home">Home</Link>
             {/* <button className="toggle-theme"> switch theme </button> */}
             </section>
         
