@@ -169,15 +169,32 @@ button#show {
   text-decoration: none;
 }
 
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: #eee;
+  margin: 1em;
+}
+
 .link,
 .home,
-nav aside {
+nav aside,
+button,
+.comment-input {
   text-decoration: none;
-  text-transform: uppercase;
   border: 2px solid slateblue;
   color: darkslateblue;
   font-weight: 700;
   padding: 5px;
+}
+
+.link,
+.home,
+nav aside,
+button {
+  text-transform: uppercase;
 }
 
 .link:focus,

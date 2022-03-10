@@ -1,4 +1,5 @@
 import axios from "axios";
+// import { UserContext } from "../contexts/UserContext";
 
 const NCNewsApi = axios.create({
   baseURL: "https://nc-news-example-seminar-2-5.herokuapp.com/api",
@@ -60,3 +61,14 @@ export function getComments(article_id) {
     }
   );
 }
+
+// Comments - POST comment to article
+
+export function postComment(article_id, bodyToPost) {
+  return NCNewsApi.post(`/articles/${article_id}/comments`, {
+    body: bodyToPost,
+    username: "grumpy19",
+  }).then(({ data: { comments } }) => {});
+}
+
+// make user dynamic
