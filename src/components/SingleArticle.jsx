@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 import { useParams } from "react-router-dom"
 import * as api from "../Api"
+import ArticleVote from "./ArticleVote"
 
 export default function SingleArticle () {
 
@@ -35,10 +36,7 @@ export default function SingleArticle () {
 
         <p className="single-article-body">{article.body}</p>
                 
-        <section className="single-article-votes">
-            <dt>{article.votes} votes</dt>
-            <button>vote here</button>
-        </section>
+        <ArticleVote article={article}/>
         
         </article>
 

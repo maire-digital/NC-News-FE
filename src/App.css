@@ -113,9 +113,6 @@ nav aside {
   color: darkslateblue;
 }
 
-.single-article-details {
-}
-
 .single-article-body {
   border: darkslateblue solid;
   padding: 10px;
@@ -154,7 +151,7 @@ nav aside {
   outline-offset: 5px;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 750px) {
   .articles-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
