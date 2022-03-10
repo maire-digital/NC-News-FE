@@ -9,6 +9,7 @@ export default function SingleArticle () {
     const [article, setArticle] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { article_id } = useParams();
+    
 
     useEffect(() => {
         setIsLoading(true)
@@ -27,7 +28,7 @@ export default function SingleArticle () {
     return(
     <>
     <article className="single-article"> 
-    
+
         <section className="single-article-header">
             <h2>{article.title}</h2>
             <h4>{article.topic}</h4> 
@@ -45,6 +46,7 @@ export default function SingleArticle () {
 
     <h3 className="article-comments-title"> Comments </h3>
     <ArticleComments />
+    
     </>
     )
 }
