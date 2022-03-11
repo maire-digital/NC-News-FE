@@ -31,7 +31,7 @@ export default function SingleArticle () {
 
         <section className="single-article-header">
             <h2>{article.title}</h2>
-            <h4>{article.topic}</h4> 
+            <h4 className="article-topic">{article.topic}</h4> 
         </section>
 
         <section className="single-article-details">
@@ -43,8 +43,7 @@ export default function SingleArticle () {
         <Voter article={article}/>
         
     </article>
-
-    <h3 className="article-comments-title"> Comments </h3>
+    <h3 className="article-comments-title">Comments </h3>
     <ArticleComments />
     
     </>

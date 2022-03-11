@@ -66,6 +66,17 @@ nav aside {
   margin-right: 5px;
 }
 
+.sort-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+.dropdown-content {
+  position: absolute;
+  z-index: 1;
+}
+
 .articles-list,
 .comments-list {
   display: grid;
@@ -97,11 +108,21 @@ nav aside {
 }
 
 .article-card-body {
-  margin-top: 1em;
+  padding: 2px;
 }
 
-.article-card-snippet,
-.article-card-topic {
+.article-card-body:hover,
+.article-card-body:focus {
+  color: darkslateblue;
+}
+
+.article-card-snippet {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.article-card-body,
+.single-article-details {
   color: slateblue;
 }
 
@@ -146,15 +167,21 @@ nav aside {
   color: darkslateblue;
   text-align: left;
   margin-left: 2em;
-  margin-right: 2em;
   margin-bottom: 1em;
 }
 
-button#hide {
+button.collapse {
+  margin: 1em;
+  margin-bottom: 3em;
+}
+
+.sort-dropdown#hide,
+.link#hide {
   display: none;
 }
 
-button#show {
+.sort-dropdown#show,
+.link#show {
   display: block;
 }
 
@@ -169,13 +196,22 @@ button#show {
   text-decoration: none;
 }
 
-input {
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: groove;
+.link {
+  margin: 1px;
+}
+
+textarea {
   background-color: #eee;
-  margin: 1em;
+  width: 82%;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 1em;
 }
 
 .link,
@@ -199,18 +235,21 @@ button {
 
 .link:focus,
 .link:hover,
-.link:active,
 .home:focus,
 .home:hover,
 .article-link:focus,
 .article-link:hover,
-button#show:hover,
-button#show:focus {
+button:hover,
+button:focus {
   background-color: darkslateblue;
   color: beige;
   font-weight: lighter;
   outline: solid slateblue;
   outline-offset: 5px;
+}
+
+:link:active {
+  background-color: darkslateblue;
 }
 
 @media (min-width: 750px) {
@@ -236,8 +275,12 @@ button#show:focus {
   .single-article-votes {
     justify-content: right;
   }
-  .comments-list {
+  .single-article,
+  form {
     margin-left: 5em;
     margin-right: 5em;
+  }
+  .article-comments-title {
+    font-size: 3vw;
   }
 }
