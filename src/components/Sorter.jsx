@@ -2,7 +2,8 @@ import { useState } from "react"
 
 export default function SortBy ({setSearchParams, searchParams}) {
 
-    const [clicked, setClicked] = useState(false)
+    const [sortClicked, setSortClicked] = useState(false)
+    const [orderClicked, setOrderClicked] = useState(false)
     const sortQuery = searchParams.get('sort')
 
 
@@ -10,28 +11,28 @@ export default function SortBy ({setSearchParams, searchParams}) {
         <div  className="sorting">
             <div className="sort-dropdown">
 
-                <button className="sort-dropbtn" onClick={()=>{clicked ? setClicked(false) : setClicked(true)}}>sort articles</button>
+                <button className="sort-dropbtn" onClick={()=>{sortClicked ? setSortClicked(false) : setSortClicked(true)}}>sort articles</button>
                 
                 <section  className="sort-dropdown-content">
                     
-                    <button className="link" id={clicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: "votes", order: "desc"}); setClicked(false)}}> votes </button>
+                    <button id={sortClicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: "votes", order: "desc"}); setSortClicked(false)}}> votes </button>
 
-                    <button className="link" id={clicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: "created_at"}); setClicked(false)}}> date </button>
+                    <button id={sortClicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: "created_at"}); setSortClicked(false)}}> date </button>
 
-                    <button className="link" id={clicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: "comment_count", order:"desc"}); setClicked(false)}}> comment_count </button>
+                    <button id={sortClicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: "comment_count", order:"desc"}); setSortClicked(false)}}> comment_count </button>
 
                 
                 </section>
             </div> 
 
         <div className="order-dropdown">
-            <button className="order-dropbtn" onClick={()=>{clicked ? setClicked(false) : setClicked(true)}}>order</button>
+            <button className="order-dropbtn" onClick={()=>{orderClicked ? setOrderClicked(false) : setOrderClicked(true)}}>order</button>
 
             <section className="order-dropdown-content">
 
-                <button className="link" id={clicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: sortQuery, order: "asc"}); setClicked(false)}}> asc </button>
+                <button className="link" id={orderClicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: sortQuery, order: "asc"}); setOrderClicked(false)}}> asc </button>
 
-                <button className="link" id={clicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: sortQuery, order: "desc"}); setClicked(false)}}> desc </button>
+                <button className="link" id={orderClicked ? "show" : "hide"} onClick={()=>{setSearchParams({sort: sortQuery, order: "desc"}); setOrderClicked(false)}}> desc </button>
 
             </section>
         </div>

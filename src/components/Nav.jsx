@@ -10,7 +10,6 @@ export default function Nav () {
             <aside>              
             <img className="user-img-avatar" src={loggedInUser.avatar_url} alt="logged in user" />
             WELCOME {loggedInUser.username}
- 
             </aside>
             <section>    
             <Link to="/" className="home">Home</Link>
