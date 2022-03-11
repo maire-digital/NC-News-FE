@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, useSearchParams, Link } from "react-router-dom"
 import * as api from "../Api"
-import { SortingNav } from "./SortingNav"
+import { TopicsSortingNav } from "./TopicsSortingNav"
+import SortBy from "./Sorter"
 
 
 export default function HomeArticles () {
@@ -9,25 +10,34 @@ export default function HomeArticles () {
     const [homeArticles, setHomeArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { topic } = useParams();
+    const [searchParams, setSearchParams] = useSearchParams([]);
   
     useEffect(() => {
         setIsLoading(true)
+        const search = searchParams.get('sort')
+
         if (topic) {
-   
-        api.getSortedArticles(topic)
-        .then((sortedArticles)=> { 
-        setHomeArticles(sortedArticles) 
-        setIsLoading(false)})     
+            api.getArticlesByTopic(topic)
+            .then((topicArticles)=> { 
+            setHomeArticles(topicArticles) 
+            setIsLoading(false)})     
+        }
+
+        if (search) {
+            api.getSortedArticles(search)
+            .then((sortedArticles)=> { 
+            setHomeArticles(sortedArticles) 
+            setIsLoading(false)})              
         }
         
         else {
-        api.getArticles()
-        .then(articles=>{
-        setHomeArticles(articles)
-        setIsLoading(false)
-        })      
+            api.getArticles()
+            .then(articles=>{
+            setHomeArticles(articles)
+            setIsLoading(false)
+            })      
         }
-    }, [topic])
+    }, [topic, searchParams, setSearchParams])
 
     function limit (string = '', limit = 0) {  
         return string.substring(0, limit)
@@ -37,7 +47,11 @@ export default function HomeArticles () {
 
     return (
         <>
-     <SortingNav />
+        <section className="sorting">
+            <TopicsSortingNav />  
+            <SortBy setSearchParams={setSearchParams} /> Order: (asc/desc)
+        </section>
+     
         <article>
             <ul className="articles-list">
             {homeArticles.map(article => {
@@ -51,11 +65,10 @@ export default function HomeArticles () {
                         </Link>
                             <main className="article-card-body">
                               <h4 className="user"> {article.author}</h4>
-                              <dt className="article-card-topic">{article.topic}</dt>
+                              <dt className="article-topic">{article.topic}</dt>
                                 <dl>
                                     <time>{date.toUTCString()}</time>
-                                    <dt className="article-card-snippet">{limit(article.body, 120)}... </dt>
-                                    <dt>see more...</dt>
+                                    <dt className="article-card-snippet">{limit(article.body, 120)}  [...] </dt>
                                     <section id="article-info">
                                     
                                     <dt>{article.comment_count} comments </dt>

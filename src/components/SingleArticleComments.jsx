@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 import { useParams } from "react-router-dom"
 import * as api from "../Api"
+import Collapse from "./Collapse"
 import CommentAdder from "./CommentAdder"
 
 export default function ArticleComments () {
@@ -25,7 +26,7 @@ export default function ArticleComments () {
     return(
         <>
         <CommentAdder setIsPosted={setIsPosted}/>
-
+        <Collapse>
         <ul className="comments-list">
             {articleComments.map((comment) => {
 
@@ -39,7 +40,7 @@ export default function ArticleComments () {
                 </li>
             )})}
         </ul>
-        
+        </Collapse>
         </>
     )
 

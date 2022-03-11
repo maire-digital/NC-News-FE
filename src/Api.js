@@ -22,8 +22,18 @@ export function getTopics() {
 
 // Articles - GET articles by topic
 
-export function getSortedArticles(topic) {
+export function getArticlesByTopic(topic) {
   return NCNewsApi.get(`/articles?topic=${topic}`).then(
+    ({ data: { articles } }) => {
+      return articles;
+    }
+  );
+}
+
+// Articles - GET articles by sort property
+
+export function getSortedArticles(sort_by) {
+  return NCNewsApi.get(`/articles?sort_by=${sort_by}`).then(
     ({ data: { articles } }) => {
       return articles;
     }
