@@ -66,7 +66,7 @@ nav aside {
   margin-right: 5px;
 }
 
-.dropdown {
+.sort-dropdown {
   position: relative;
   display: inline-block;
   margin-bottom: 1em;
@@ -175,12 +175,12 @@ button.collapse {
   margin-bottom: 3em;
 }
 
-button#hide,
+.sort-dropdown#hide,
 .link#hide {
   display: none;
 }
 
-button#show,
+.sort-dropdown#show,
 .link#show {
   display: block;
 }

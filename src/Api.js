@@ -32,8 +32,8 @@ export function getArticlesByTopic(topic) {
 
 // Articles - GET articles by sort property
 
-export function getSortedArticles(sort_by) {
-  return NCNewsApi.get(`/articles?sort_by=${sort_by}`).then(
+export function getSortedArticles(sort_by, order) {
+  return NCNewsApi.get(`/articles?sort_by=${sort_by}&order=${order}`).then(
     ({ data: { articles } }) => {
       return articles;
     }

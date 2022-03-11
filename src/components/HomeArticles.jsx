@@ -10,11 +10,11 @@ export default function HomeArticles () {
     const [homeArticles, setHomeArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { topic } = useParams();
-    const [searchParams, setSearchParams] = useSearchParams([]);
+    const [searchParams, setSearchParams] = useSearchParams({sort: "created_at", order: "desc"});
   
     useEffect(() => {
         setIsLoading(true)
-        const search = searchParams.get('sort')
+        const searchObj = Object.fromEntries([...searchParams])
 
         if (topic) {
             api.getArticlesByTopic(topic)
@@ -23,8 +23,8 @@ export default function HomeArticles () {
             setIsLoading(false)})     
         }
 
-        if (search) {
-            api.getSortedArticles(search)
+        if (searchObj) {
+            api.getSortedArticles(searchObj.sort, searchObj.order)
             .then((sortedArticles)=> { 
             setHomeArticles(sortedArticles) 
             setIsLoading(false)})              
@@ -47,9 +47,9 @@ export default function HomeArticles () {
 
     return (
         <>
-        <section className="sorting">
+        <section>
             <TopicsSortingNav />  
-            <SortBy setSearchParams={setSearchParams} /> Order: (asc/desc)
+            <SortBy setSearchParams={setSearchParams} searchParams={searchParams} />
         </section>
      
         <article>
