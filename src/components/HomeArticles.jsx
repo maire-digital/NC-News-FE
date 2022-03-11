@@ -24,7 +24,7 @@ export default function HomeArticles () {
         }
 
         if (searchObj) {
-            api.getSortedArticles(searchObj.sort, searchObj.order)
+            api.getSortedArticles(searchObj.sort, searchObj.order, topic)
             .then((sortedArticles)=> { 
             setHomeArticles(sortedArticles) 
             setIsLoading(false)})              

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Collapse ({children}) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const handleClick = () => {
     setIsVisible((visibility) => {return  !visibility})
@@ -9,8 +9,8 @@ export default function Collapse ({children}) {
 
   return (
     <>
-    {isVisible && children}
     <button className="collapse" onClick={handleClick}> {isVisible? "Hide comments" : "Show comments"} </button>
+    {isVisible && children}
     </>
   )
 
@@ -18,16 +18,4 @@ export default function Collapse ({children}) {
 }
 
 
-// const Expandable = ({ children }) => {
-//     const [isOpen, setIsOpen] = useState(false);
-  
-//     const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
-  
-//     return (
-//       <div>
-//         <button onClick={toggleOpen}>{isOpen ? 'Close' : 'Open'}</button>
-//         {isOpen && children}
-//       </div>
-//     );
-//   };
   

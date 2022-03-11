@@ -44,6 +44,7 @@ export default function SingleArticle () {
         
     </article>
     <h3 className="article-comments-title">Comments </h3>
+    {/* <dt>{article.comment_count}</dt> */}
     <ArticleComments />
     
     </>

@@ -85,6 +85,7 @@ nav aside {
   text-align: left;
   margin-left: 2em;
   margin-right: 2em;
+  margin-top: 1em;
 }
 
 .article-card,
@@ -172,15 +173,31 @@ nav aside {
 
 button.collapse {
   margin: 1em;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
 }
 
-.sort-dropdown#hide,
+.sorting {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sort-dropdown,
+.order-dropdown {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+#hide,
 .link#hide {
   display: none;
 }
 
-.sort-dropdown#show,
+#show,
 .link#show {
   display: block;
 }

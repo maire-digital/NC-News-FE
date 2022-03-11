@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { UserContext } from "../contexts/UserContext";
 
 const NCNewsApi = axios.create({
   baseURL: "https://nc-news-example-seminar-2-5.herokuapp.com/api",
@@ -32,8 +31,8 @@ export function getArticlesByTopic(topic) {
 
 // Articles - GET articles by sort property
 
-export function getSortedArticles(sort_by, order) {
-  return NCNewsApi.get(`/articles?sort_by=${sort_by}&order=${order}`).then(
+export function getSortedArticles(sort_by, order, topic) {
+  return NCNewsApi.get(`/articles`, { params: { sort_by, order, topic } }).then(
     ({ data: { articles } }) => {
       return articles;
     }
@@ -79,6 +78,14 @@ export function postComment(article_id, bodyToPost) {
     body: bodyToPost,
     username: "grumpy19",
   }).then(({ data: { comments } }) => {});
+}
+
+// Comments - DELETE comment by comment id
+
+export function deleteComment(comment_id) {
+  return NCNewsApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res;
+  });
 }
 
 // make user dynamic
