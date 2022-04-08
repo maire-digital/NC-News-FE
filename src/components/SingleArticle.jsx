@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom"
 import * as api from "../Api"
 import Voter from "./Voter"
 import ArticleComments from "./SingleArticleComments"
+import ErrorPage from "./ErrorPage"
 
-export default function SingleArticle () {
+export default function SingleArticle ({error, setError}) {
+
 
     const [article, setArticle] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -17,13 +19,22 @@ export default function SingleArticle () {
         api.getSingleArticle(article_id)
         .then((article)=> { 
         setArticle(article) 
-        setIsLoading(false)})     
+        setIsLoading(false)
+        }) 
+        .catch((err) => {
+            setError({ err });
+            setIsLoading(false);
+          });         
         
-    }, [article_id])
+    }, [article_id, setError])
 
     if (isLoading) return <p> Loading... </p>
 
     const date = new Date(Date.parse(article.created_at))
+
+    if (error) {
+        return <ErrorPage message={error.something} />;
+      }
 
     return(
     <>
@@ -44,8 +55,7 @@ export default function SingleArticle () {
         
     </article>
     <h3 className="article-comments-title">Comments </h3>
-    {/* <dt>{article.comment_count}</dt> */}
-    <ArticleComments />
+    <ArticleComments error={error} setError={setError}/>
     
     </>
     )

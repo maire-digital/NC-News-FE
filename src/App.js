@@ -6,8 +6,10 @@ import { UserContext } from "./contexts/UserContext";
 import { useState } from "react";
 import HomeArticles from "./components/HomeArticles";
 import SingleArticle from "./components/SingleArticle";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
+  const [error, setError] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState({
     username: "grumpy19",
     avatar_url:
@@ -21,9 +23,16 @@ function App() {
           <Nav />
           <Header />
           <Routes>
-            <Route path="/" element={<HomeArticles />} />
+            <Route
+              path="/"
+              element={<HomeArticles error={error} setError={setError} />}
+            />
             <Route path="/articles/show/:topic" element={<HomeArticles />} />
-            <Route path="/articles/:article_id" element={<SingleArticle />} />
+            <Route
+              path="/articles/:article_id"
+              element={<SingleArticle error={error} setError={setError} />}
+            />
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </div>
       </UserContext.Provider>

@@ -3,6 +3,7 @@ import { useParams, useSearchParams, Link } from "react-router-dom"
 import * as api from "../Api"
 import { TopicsSortingNav } from "./TopicsSortingNav"
 import SortBy from "./Sorter"
+import ErrorPage from "./ErrorPage"
 
 
 export default function HomeArticles () {
@@ -11,23 +12,34 @@ export default function HomeArticles () {
     const [isLoading, setIsLoading] = useState(true)
     const { topic } = useParams();
     const [searchParams, setSearchParams] = useSearchParams({sort: "created_at", order: "desc"});
+    const [error, setError] = useState(null);
+
   
     useEffect(() => {
         setIsLoading(true)
         const searchObj = Object.fromEntries([...searchParams])
-
+        setError(null)
         if (topic) {
             api.getArticlesByTopic(topic)
             .then((topicArticles)=> { 
             setHomeArticles(topicArticles) 
-            setIsLoading(false)})     
+            setIsLoading(false)        
+            })
+            .catch((err) => {
+                setIsLoading(false)
+                setError({ err });
+              });     
         }
 
         if (searchObj) {
             api.getSortedArticles(searchObj.sort, searchObj.order, topic)
             .then((sortedArticles)=> { 
             setHomeArticles(sortedArticles) 
-            setIsLoading(false)})              
+            setIsLoading(false)})
+            .catch((err) => {
+                setIsLoading(false)
+                setError({ err });
+              });              
         }
         
         else {
@@ -35,15 +47,23 @@ export default function HomeArticles () {
             .then(articles=>{
             setHomeArticles(articles)
             setIsLoading(false)
-            })      
+            })
+            .catch((err) => {
+                setIsLoading(false)
+                setError({ err });
+              });      
         }
-    }, [topic, searchParams, setSearchParams])
+    }, [topic, searchParams, setSearchParams, setError])
 
     function limit (string = '', limit = 0) {  
         return string.substring(0, limit)
       }
     
     if (isLoading) return <p> Loading... </p>
+
+    if (error) {
+        return <ErrorPage message={error.something} />;
+      }
 
     return (
         <>
