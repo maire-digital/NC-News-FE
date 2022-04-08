@@ -2,7 +2,7 @@ import * as api from "../Api"
 import { useContext } from "react"
 import { UserContext } from "../contexts/UserContext"
 
-export default function CommentDeleter({comment_id, author, isDeleted, setIsDeleted}) {
+export default function CommentDeleter({comment_id, author, setIsDeleted}) {
 
     const {loggedInUser} = useContext(UserContext)
     const isEnabled = author === loggedInUser.username

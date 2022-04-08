@@ -4,8 +4,9 @@ import * as api from "../Api"
 import Collapse from "./Collapse"
 import CommentAdder from "./CommentAdder"
 import CommentDeleter from "./CommentDeleter"
+import ErrorPage from "./ErrorPage"
 
-export default function ArticleComments () {
+export default function ArticleComments ({error, setError}) {
 
     const [articleComments, setArticleComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -20,11 +21,20 @@ export default function ArticleComments () {
         api.getComments(article_id)
         .then((comments)=> { 
         setArticleComments(comments) 
-        setIsLoading(false)})     
+        setIsLoading(false)
+        })
+        .catch((err) => {
+            setError({ err });
+            setIsLoading(false)
+          });         
         
-    }, [article_id, isPosted, isDeleted])
+    }, [article_id, isPosted, isDeleted, setError])
 
     if (isLoading) return <p> Loading... </p>
+
+    if (error) {
+        return <ErrorPage message={error.something} />;
+      }
 
     return(
         <>
@@ -40,7 +50,7 @@ export default function ArticleComments () {
                     <dt>{comment.author}</dt>
                     <time>{date.toUTCString()}</time>  
                     <dt>{comment.body}</dt>
-                    <CommentDeleter isDeleted={isDeleted} setIsDeleted={setIsDeleted} comment_id={comment.comment_id} author={comment.author}/>
+                    <CommentDeleter setIsDeleted={setIsDeleted} comment_id={comment.comment_id} author={comment.author}/>
                 </li>
             )})}
         </ul>

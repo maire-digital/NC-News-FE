@@ -25,7 +25,8 @@ header {
   position: relative;
 }
 
-header h1 {
+header h1,
+.error-msg h1 {
   font-family: "Playfair Display", serif;
   font-size: 17vw;
   color: darkslateblue;
@@ -75,6 +76,18 @@ nav aside {
 .dropdown-content {
   position: absolute;
   z-index: 1;
+}
+
+.error-msg {
+  margin: 2em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.error-msg dt {
+  padding: 1em;
 }
 
 .articles-list,
