@@ -4,6 +4,7 @@ import * as api from "../Api"
 import { TopicsSortingNav } from "./TopicsSortingNav"
 import SortBy from "./Sorter"
 import ErrorPage from "./ErrorPage"
+import SortCollapse from "./SortCollapse"
 
 
 export default function HomeArticles () {
@@ -67,10 +68,16 @@ export default function HomeArticles () {
 
     return (
         <>
-        <section>
-            <TopicsSortingNav />  
-            <SortBy setSearchParams={setSearchParams} searchParams={searchParams} />
-        </section>
+        
+        <section className="sort-choices">
+            <SortCollapse>
+                <div className="choices-dropdown">
+                <TopicsSortingNav />  
+                <SortBy setSearchParams={setSearchParams} searchParams={searchParams} />
+                </div>
+            </SortCollapse>
+         </section>
+       
      
         <article>
             <ul className="articles-list">
@@ -78,11 +85,11 @@ export default function HomeArticles () {
                 const date = new Date(Date.parse(article.created_at))
 
                 return (
-                    
+                      <Link to={`/articles/${article.article_id}`} key={article.article_id} className="article-link">
                     <li key={article.article_id} className="article-card">
-                         <Link to={`/articles/${article.article_id}`} key={article.article_id} className="article-link">
+                       
                              <h2 id="article-title">{article.title}</h2>
-                        </Link>
+                       
                             <main className="article-card-body">
                               <h4 className="user"> {article.author}</h4>
                               <dt className="article-topic">{article.topic}</dt>
@@ -97,7 +104,8 @@ export default function HomeArticles () {
                                 </dl>   
                             </main>
                            
-                    </li>
+                    </li> 
+                    </Link>
                 )
             })}
             </ul>

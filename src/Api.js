@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const NCNewsApi = axios.create({
-  baseURL: "https://nc-news-example-seminar-2-5.herokuapp.com/api",
+  baseURL: "https://nc-news-maire.herokuapp.com/api/",
 });
 
 // Articles - GET all articles

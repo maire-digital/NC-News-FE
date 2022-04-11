@@ -3,13 +3,16 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import HomeArticles from "./components/HomeArticles";
 import SingleArticle from "./components/SingleArticle";
 import ErrorPage from "./components/ErrorPage";
+import { ThemeContext } from "./contexts/Theme";
+
 
 function App() {
   const [error, setError] = useState(null);
+  const { toggle } = useContext(ThemeContext);
   const [loggedInUser, setLoggedInUser] = useState({
     username: "grumpy19",
     avatar_url:
@@ -19,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
-        <div className="App">
+        <div className={`App ${toggle ? "dark" : "light"}`}>
           <Nav />
           <Header />
           <Routes>
