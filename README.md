@@ -12,7 +12,7 @@ This repo contains the frontend architecture for a full-stack social news applic
 
 It uses my [NC News Backend](https://github.com/maire-digital/NC-News-BE) and rounds out this full-stack project.
 
-_You can access a hosted version of this API on [Netlify](https://nc-news-maire.herokuapp.com/api/)._
+_You can access a hosted version of this app on [Netlify](https://nc-news-maire.herokuapp.com/api/)._
 
 ## <br> Minimum Requirements <br>
 
