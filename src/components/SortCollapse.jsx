@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function SortCollapse ({children}) {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = () => {
     setIsVisible((visibility) => {return  !visibility})
