@@ -49,7 +49,7 @@ Once the app is running, it will open in browser on a local host. Please explore
 
 ## <br>🗂 **_Thank you for looking through this repository!_**
 
-### 🖥 **_Check out the frontend (add link) to see the whole application in action._**
+### 🖥 **_Check out the [backend](https://github.com/maire-digital/NC-News-BE)) to see the whole application in action._**
 
 <br>👩🏽‍💻 **I'm always happy to connect with new people and opportunities!**
 
