@@ -8,7 +8,7 @@
 
 ## <br> Project Background
 
-This repo contains the frontend architecture for a full-stack social news application, "NC News", drawing inspiration from Reddit. The user is able to view a news-feed with all available articles, and to filter articles by topic, comment count, votes, and date. They can also view an individual article page for each article and their associated comments, as well as post and delete their own comments. Each user can choose to toggle between dark and light modes, depending on their preference. It is built using `React.js`, `Axios` and vanilla `CSS` for all styling.
+This repo contains the frontend architecture for a full-stack social news application, "NC News", drawing inspiration from Reddit. The user is able to view a news-feed with all available articles, and to filter articles by topic, comment count, votes, and date. They can also view an individual article page for each article and their associated comments, as well as post and delete their own comments. Each user can choose to toggle between dark and light modes, depending on their preference. It is built using `React.js`, `Axios`, and vanilla `CSS` for all styling.
 
 It uses my [NC News Backend](https://github.com/maire-digital/NC-News-BE) and rounds out this full-stack project.
 
@@ -49,7 +49,7 @@ Once the app is running, it will open in browser on a local host. Please explore
 
 ## <br>🗂 **_Thank you for looking through this repository!_**
 
-### 🖥 **_Check out the frontend (add link) to see the whole application in action._**
+### 🖥 **_Check out the [backend](https://github.com/maire-digital/NC-News-BE)) to see the whole application in action._**
 
 <br>👩🏽‍💻 **I'm always happy to connect with new people and opportunities!**
 

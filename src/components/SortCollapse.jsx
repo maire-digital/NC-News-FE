@@ -9,7 +9,7 @@ export default function SortCollapse ({children}) {
 
   return (
     <>
-    <button className="sort-collapse" onClick={handleClick}> sort ☰</button>
+    <button className="sort-collapse" onClick={handleClick}> filter ☰</button>
     {isVisible && children}
     </>
   )
