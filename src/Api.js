@@ -87,5 +87,3 @@ export function deleteComment(comment_id) {
     return res;
   });
 }
-
-// make user dynamic
